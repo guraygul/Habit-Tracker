@@ -8,45 +8,60 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var path = NavigationPath()
-    @State private var habits = Habits()
+    @State private var data = Habits()
     @State private var showingAddHabits = false
     
     var body: some View {
-        NavigationStack(path: $path) {
-            List {
-                ForEach(habits.items) { item in
+        NavigationStack {
+            List(data.habits) { activity in
+                NavigationLink {
+                    HabitView(data: data, habit: activity)
+                } label: {
                     HStack {
-                        VStack(alignment: .leading) {
-                            NavigationLink {
-                                List {
-                                    Text("Habit name: \(item.name)")
-                                        .font(.headline)
-                                    Text("Habit detials: \(item.detail)")
-                                }
-                            } label: {
-                                Text(item.name)
-                            }
-                        }
+                        Text(activity.name)
+                        
+                        Spacer()
+                        
+                        Text(String(activity.habitCount))
+                            .font(.caption.weight(.black))
+                            .padding(5)
+                            .frame(minWidth: 50)
+                            .background(color(for: activity))
+                            .foregroundStyle(.white)
+                            .clipShape(.capsule)
                     }
                 }
-                .onDelete(perform: removeItems)
             }
+            //.onDelete(perform: removeItems)
             .navigationTitle("Habit Tracker")
             .toolbar {
                 Button("Add Habits", systemImage: "plus") {
-                    showingAddHabits = true
+                    showingAddHabits.toggle()
                 }
             }
             .sheet(isPresented: $showingAddHabits) {
-                AddView(habits: habits)
+                AddView(data: data)
             }
         }
     }
-    
-    func removeItems(at offsets: IndexSet) {
-        habits.items.remove(atOffsets: offsets)
+
+    func color(for activity: HabitItem) -> Color {
+        if activity.habitCount < 3 {
+            .red
+        } else if activity.habitCount < 10 {
+            .orange
+        } else if activity.habitCount < 20 {
+            .green
+        } else if activity.habitCount < 50 {
+            .blue
+        } else {
+            .indigo
+        }
     }
+    
+//    func removeItems(at offsets: IndexSet) {
+//        data.habits.remove(atOffsets: offsets)
+//    }
     
 }
 

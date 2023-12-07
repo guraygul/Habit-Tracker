@@ -10,12 +10,11 @@ import SwiftUI
 struct AddView: View {
     @Environment(\.dismiss) var dismiss
     
+    var data : Habits
+    
     @State private var name = ""
     @State private var detail = ""
-    @State private var habitCount = 0
-    
-    var habits : Habits
-    
+
     var body: some View {
         NavigationStack {
             List {
@@ -31,8 +30,11 @@ struct AddView: View {
                 }
                 ToolbarItem(placement: .confirmationAction){
                     Button("Save") {
-                        let item  = HabitItem(name: name, detail: detail, habitCount: habitCount)
-                        habits.items.append(item)
+                        let trimmedTitle = name.trimmingCharacters(in: .whitespaces)
+                        guard trimmedTitle.isEmpty == false else { return }
+                        
+                        let item  = HabitItem(name: trimmedTitle, detail: detail)
+                        data.habits.append(item)
                         dismiss()
                     }
                 }
@@ -42,5 +44,5 @@ struct AddView: View {
 }
 
 #Preview {
-    AddView(habits: Habits())
+    AddView(data: Habits())
 }

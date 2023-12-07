@@ -7,9 +7,11 @@
 
 import Foundation
 
-struct HabitItem: Identifiable, Codable, Equatable, Hashable {
+struct HabitItem: Identifiable, Codable, Equatable {
     var id = UUID()
-    let name: String
-    let detail: String
-    let habitCount: Int
+    var name: String
+    var detail: String
+    var habitCount = 0
+    
+    static let example = HabitItem(name: "Example habit", detail: "This is a test detail")
 }

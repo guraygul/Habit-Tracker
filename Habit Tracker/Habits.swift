@@ -9,22 +9,22 @@ import Foundation
 
 @Observable
 class Habits {
-    var items = [HabitItem]() {
+    var habits = [HabitItem]() {
         didSet {
-            if let encoded = try? JSONEncoder().encode(items) {
-                UserDefaults.standard.set(encoded, forKey: "Items")
+            if let encoded = try? JSONEncoder().encode(habits) {
+                UserDefaults.standard.set(encoded, forKey: "Habits")
             }
         }
     }
     
     init() {
-        if let savedItems = UserDefaults.standard.data(forKey: "Items") {
+        if let savedItems = UserDefaults.standard.data(forKey: "Habits") {
             if let decodedItems = try? JSONDecoder().decode([HabitItem].self, from: savedItems) {
-                items = decodedItems
+                habits = decodedItems
                 return
             }
         }
-        items = []
+        habits = []
     }
     
 }

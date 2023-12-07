@@ -14,6 +14,7 @@
 		10646E6D2B1FB6D700109E36 /* HabitItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10646E6C2B1FB6D700109E36 /* HabitItem.swift */; };
 		10646E6F2B1FB79A00109E36 /* Habits.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10646E6E2B1FB79A00109E36 /* Habits.swift */; };
 		10646E712B1FBCBA00109E36 /* AddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10646E702B1FBCBA00109E36 /* AddView.swift */; };
+		1077A0582B2236F300BAE374 /* HabitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1077A0572B2236F300BAE374 /* HabitView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +26,7 @@
 		10646E6C2B1FB6D700109E36 /* HabitItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitItem.swift; sourceTree = "<group>"; };
 		10646E6E2B1FB79A00109E36 /* Habits.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Habits.swift; sourceTree = "<group>"; };
 		10646E702B1FBCBA00109E36 /* AddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddView.swift; sourceTree = "<group>"; };
+		1077A0572B2236F300BAE374 /* HabitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +66,7 @@
 				10646E702B1FBCBA00109E36 /* AddView.swift */,
 				10646E622B1FB61C00109E36 /* Assets.xcassets */,
 				10646E642B1FB61C00109E36 /* Preview Content */,
+				1077A0572B2236F300BAE374 /* HabitView.swift */,
 			);
 			path = "Habit Tracker";
 			sourceTree = "<group>";
@@ -149,6 +152,7 @@
 				10646E612B1FB61B00109E36 /* ContentView.swift in Sources */,
 				10646E5F2B1FB61B00109E36 /* Habit_TrackerApp.swift in Sources */,
 				10646E712B1FBCBA00109E36 /* AddView.swift in Sources */,
+				1077A0582B2236F300BAE374 /* HabitView.swift in Sources */,
 				10646E6F2B1FB79A00109E36 /* Habits.swift in Sources */,
 				10646E6D2B1FB6D700109E36 /* HabitItem.swift in Sources */,
 			);
