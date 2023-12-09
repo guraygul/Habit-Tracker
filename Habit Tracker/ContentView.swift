@@ -13,26 +13,28 @@ struct ContentView: View {
     
     var body: some View {
         NavigationStack {
-            List(data.habits) { activity in
-                NavigationLink {
-                    HabitView(data: data, habit: activity)
-                } label: {
-                    HStack {
-                        Text(activity.name)
-                        
-                        Spacer()
-                        
-                        Text(String(activity.habitCount))
-                            .font(.caption.weight(.black))
-                            .padding(5)
-                            .frame(minWidth: 50)
-                            .background(color(for: activity))
-                            .foregroundStyle(.white)
-                            .clipShape(.capsule)
+            List {
+                ForEach(data.habits) { activity in
+                    NavigationLink {
+                        HabitView(data: data, habit: activity)
+                    } label: {
+                        HStack {
+                            Text(activity.name)
+                            
+                            Spacer()
+                            
+                            Text(String(activity.habitCount))
+                                .font(.caption.weight(.black))
+                                .padding(5)
+                                .frame(minWidth: 50)
+                                .background(color(for: activity))
+                                .foregroundStyle(.white)
+                                .clipShape(.capsule)
+                        }
                     }
                 }
+                .onDelete(perform: removeItems)
             }
-            //.onDelete(perform: removeItems)
             .navigationTitle("Habit Tracker")
             .toolbar {
                 Button("Add Habits", systemImage: "plus") {
@@ -44,7 +46,7 @@ struct ContentView: View {
             }
         }
     }
-
+    
     func color(for activity: HabitItem) -> Color {
         if activity.habitCount < 3 {
             .red
@@ -59,9 +61,9 @@ struct ContentView: View {
         }
     }
     
-//    func removeItems(at offsets: IndexSet) {
-//        data.habits.remove(atOffsets: offsets)
-//    }
+    func removeItems(at offsets: IndexSet) {
+        data.habits.remove(atOffsets: offsets)
+    }
     
 }
 
